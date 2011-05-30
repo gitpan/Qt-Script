@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,33 +23,38 @@ Qt::Script::QScriptProgram
 
 =over
 
-=item    QScriptProgram()
+=item   QScriptProgram()
 
-=item    QScriptProgram(const QScriptProgram & other)
+=item   QScriptProgram()
 
-=item    QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber = 1)
+=item   QScriptProgram(, , )
 
-=item    QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber)
+=item   QScriptProgram(, ,  = 1)
 
-=item    QScriptProgram(const QString & sourceCode, const QString fileName = QString(), int firstLineNumber = 1)
+=item   QScriptProgram(,  = QString(),  = 1)
 
-=item    QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber = 1)
+=item   ~QScriptProgram()
 
-=item    ~QScriptProgram()
+=item  QString fileName()
 
-=item   QString fileName()
+=item  int firstLineNumber()
 
-=item   int firstLineNumber()
+=item  bool isNull()
 
-=item   bool isNull()
+=item  bool operator!=()
 
-=item   bool operator!=(const QScriptProgram & other)
+=item  QScriptProgram & operator=()
 
-=item   QScriptProgram & operator=(const QScriptProgram & other)
+=item  bool operator==()
 
-=item   bool operator==(const QScriptProgram & other)
+=item  QString sourceCode()
 
-=item   QString sourceCode()
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

@@ -7,16 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub Error() { 0 }
-sub Intermediate() { 1 }
-sub Valid() { 2 }
 
 
 1;
@@ -29,19 +23,32 @@ Qt::Script::QScriptSyntaxCheckResult
 
 =over
 
-=item    QScriptSyntaxCheckResult(const QScriptSyntaxCheckResult & other)
+=item   QScriptSyntaxCheckResult()
 
-=item    ~QScriptSyntaxCheckResult()
+=item   ~QScriptSyntaxCheckResult()
 
-=item   int errorColumnNumber()
+=item  int errorColumnNumber()
 
-=item   int errorLineNumber()
+=item  int errorLineNumber()
 
-=item   QString errorMessage()
+=item  QString errorMessage()
 
-=item   QScriptSyntaxCheckResult & operator=(const QScriptSyntaxCheckResult & other)
+=item  QScriptSyntaxCheckResult & operator=()
 
-=item   QScriptSyntaxCheckResult::State state()
+=item  QScriptSyntaxCheckResult::State state()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item Error
+
+=item Intermediate
+
+=item Valid
 
 
 =back

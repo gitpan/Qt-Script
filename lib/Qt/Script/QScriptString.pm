@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,27 +23,34 @@ Qt::Script::QScriptString
 
 =over
 
-=item    QScriptString()
+=item   QScriptString()
 
-=item    QScriptString(const QScriptString & other)
+=item   QScriptString()
 
-=item    ~QScriptString()
+=item   ~QScriptString()
 
-=item   bool isValid()
+=item  bool isValid()
 
-=item   QString operator QString()
+=item  QString operator QString()
 
-=item   bool operator!=(const QScriptString & other)
+=item  bool operator!=()
 
-=item   QScriptString & operator=(const QScriptString & other)
+=item  QScriptString & operator=()
 
-=item   bool operator==(const QScriptString & other)
+=item  bool operator==()
 
-=item   quint32 toArrayIndex(bool * ok = 0)
+=item  quint32 toArrayIndex()
 
-=item   quint32 toArrayIndex(bool * ok)
+=item  quint32 toArrayIndex( = 0)
 
-=item   QString toString()
+=item  QString toString()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

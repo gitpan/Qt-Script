@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,25 +23,34 @@ Qt::Script::QScriptClassPropertyIterator
 
 =over
 
-=item    ~QScriptClassPropertyIterator()
+=item   ~QScriptClassPropertyIterator()
 
-=item   bool hasNext()
+=item  QFlags<QScriptValue::PropertyFlag> flags()
 
-=item   bool hasPrevious()
+=item  bool hasNext()
 
-=item   uint id()
+=item  bool hasPrevious()
 
-=item   QScriptString name()
+=item  uint id()
 
-=item   void next()
+=item  QScriptString name()
 
-=item   QScriptValue object()
+=item  void next()
 
-=item   void previous()
+=item  QScriptValue object()
 
-=item   void toBack()
+=item  void previous()
 
-=item   void toFront()
+=item  void toBack()
+
+=item  void toFront()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

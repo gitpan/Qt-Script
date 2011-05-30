@@ -7,17 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub HandlesReadAccess() { 0 }
-sub HandlesWriteAccess() { 1 }
-sub Callable() { 0 }
-sub HasInstance() { 1 }
 
 
 1;
@@ -30,27 +23,46 @@ Qt::Script::QScriptClass
 
 =over
 
-=item    QScriptClass(QScriptEngine * engine)
+=item   QScriptClass()
 
-=item    ~QScriptClass()
+=item   ~QScriptClass()
 
-=item   QScriptEngine * engine()
+=item  QScriptEngine * engine()
 
-=item   QVariant extension(QScriptClass::Extension extension, const QVariant & argument = QVariant())
+=item  QVariant extension(, )
 
-=item   QVariant extension(QScriptClass::Extension extension, const QVariant & argument)
+=item  QVariant extension(,  = QVariant())
 
-=item   QString name()
+=item  QString name()
 
-=item   QScriptClassPropertyIterator * newIterator(const QScriptValue & object)
+=item  QScriptClassPropertyIterator * newIterator()
 
-=item   QScriptValue property(const QScriptValue & object, const QScriptString & name, uint id)
+=item  QScriptValue property(, , )
 
-=item   QScriptValue prototype()
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, , )
 
-=item   void setProperty(QScriptValue & object, const QScriptString & name, uint id, const QScriptValue & value)
+=item  QScriptValue prototype()
 
-=item   bool supportsExtension(QScriptClass::Extension extension)
+=item  QFlags<QScriptClass::QueryFlag> queryProperty(, , , )
+
+=item  void setProperty(, , , )
+
+=item  bool supportsExtension()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item HandlesReadAccess
+
+=item HandlesWriteAccess
+
+=item Callable
+
+=item HasInstance
 
 
 =back

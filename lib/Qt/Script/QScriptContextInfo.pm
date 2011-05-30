@@ -7,17 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub ScriptFunction() { 0 }
-sub QtFunction() { 1 }
-sub QtPropertyFunction() { 2 }
-sub NativeFunction() { 3 }
 
 
 1;
@@ -30,41 +23,56 @@ Qt::Script::QScriptContextInfo
 
 =over
 
-=item    QScriptContextInfo()
+=item   QScriptContextInfo()
 
-=item    QScriptContextInfo(const QScriptContext * context)
+=item   QScriptContextInfo()
 
-=item    QScriptContextInfo(const QScriptContextInfo & other)
+=item   QScriptContextInfo()
 
-=item    ~QScriptContextInfo()
+=item   ~QScriptContextInfo()
 
-=item   int columnNumber()
+=item  int columnNumber()
 
-=item   QString fileName()
+=item  QString fileName()
 
-=item   int functionEndLineNumber()
+=item  int functionEndLineNumber()
 
-=item   int functionMetaIndex()
+=item  int functionMetaIndex()
 
-=item   QString functionName()
+=item  QString functionName()
 
-=item   QStringList functionParameterNames()
+=item  QStringList functionParameterNames()
 
-=item   int functionStartLineNumber()
+=item  int functionStartLineNumber()
 
-=item   QScriptContextInfo::FunctionType functionType()
+=item  QScriptContextInfo::FunctionType functionType()
 
-=item   bool isNull()
+=item  bool isNull()
 
-=item   int lineNumber()
+=item  int lineNumber()
 
-=item   bool operator!=(const QScriptContextInfo & other)
+=item  bool operator!=()
 
-=item   QScriptContextInfo & operator=(const QScriptContextInfo & other)
+=item  QScriptContextInfo & operator=()
 
-=item   bool operator==(const QScriptContextInfo & other)
+=item  bool operator==()
 
-=item   qint64 scriptId()
+=item  qint64 scriptId()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item ScriptFunction
+
+=item QtFunction
+
+=item QtPropertyFunction
+
+=item NativeFunction
 
 
 =back

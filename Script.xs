@@ -11,6 +11,7 @@
 #include "QtScript/qscriptengine.h"
 #include "QtScript/qscriptengineagent.h"
 #include "QtScript/qscriptextensioninterface.h"
+#include "QtScript/qscriptextensionplugin.h"
 #include "QtScript/qscriptprogram.h"
 #include "QtScript/qscriptstring.h"
 #include "QtScript/qscriptvalue.h"
@@ -41,7 +42,7 @@ INCLUDE:		xs/QScriptContext.xs
 INCLUDE:		xs/QScriptContextInfo.xs
 INCLUDE:		xs/QScriptEngine.xs
 INCLUDE:		xs/QScriptEngineAgent.xs
-INCLUDE:		xs/QScriptExtensionInterface.xs
+INCLUDE:		xs/QScriptExtensionPlugin.xs
 INCLUDE:		xs/QScriptProgram.xs
 INCLUDE:		xs/QScriptString.xs
 INCLUDE:		xs/QScriptSyntaxCheckResult.xs

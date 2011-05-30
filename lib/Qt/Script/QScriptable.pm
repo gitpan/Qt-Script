@@ -7,11 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
 
 
 1;
@@ -24,19 +23,26 @@ Qt::Script::QScriptable
 
 =over
 
-=item    QScriptable()
+=item   QScriptable()
 
-=item    ~QScriptable()
+=item   ~QScriptable()
 
-=item   QScriptValue argument(int index)
+=item  QScriptValue argument()
 
-=item   int argumentCount()
+=item  int argumentCount()
 
-=item   QScriptContext * context()
+=item  QScriptContext * context()
 
-=item   QScriptEngine * engine()
+=item  QScriptEngine * engine()
 
-=item   QScriptValue thisObject()
+=item  QScriptValue thisObject()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
 
 
 =back

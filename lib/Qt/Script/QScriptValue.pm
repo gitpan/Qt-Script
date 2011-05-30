@@ -7,27 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub ResolveLocal() { 0 }
-sub ResolvePrototype() { 1 }
-sub ResolveScope() { 2 }
-sub ResolveFull() { 3 }
-sub ReadOnly() { 0 }
-sub Undeletable() { 1 }
-sub SkipInEnumeration() { 2 }
-sub PropertyGetter() { 3 }
-sub PropertySetter() { 4 }
-sub QObjectMember() { 5 }
-sub KeepExistingFlags() { 6 }
-sub UserRange() { 7 }
-sub NullValue() { 0 }
-sub UndefinedValue() { 1 }
 
 
 1;
@@ -40,135 +23,202 @@ Qt::Script::QScriptValue
 
 =over
 
-=item    QScriptValue()
+=item   QScriptValue()
 
-=item    QScriptValue(const QScriptValue & other)
+=item   QScriptValue()
 
-=item    QScriptValue(QScriptValue::SpecialValue value)
+=item   QScriptValue()
 
-=item    QScriptValue(bool value)
+=item   QScriptValue()
 
-=item    QScriptValue(int value)
+=item   QScriptValue()
 
-=item    QScriptValue(uint value)
+=item   QScriptValue()
 
-=item    QScriptValue(double value)
+=item   QScriptValue()
 
-=item    QScriptValue(const QString & value)
+=item   QScriptValue()
 
-=item    QScriptValue(const QLatin1String & value)
+=item   QScriptValue()
 
-=item    QScriptValue(const char * value)
+=item   QScriptValue()
 
-=item    QScriptValue(QScriptEngine * engine, QScriptValue::SpecialValue val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, bool val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, int val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, uint val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, double val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, const QString & val)
+=item   QScriptValue(, )
 
-=item    QScriptValue(QScriptEngine * engine, const char * val)
+=item   QScriptValue(, )
 
-=item    ~QScriptValue()
+=item   ~QScriptValue()
 
-=item   QScriptValue call(const QScriptValue & thisObject, const QScriptValue & arguments)
+=item  QScriptValue call(, )
 
-=item   QScriptValue construct(const QScriptValue & arguments)
+=item  QScriptValue construct()
 
-=item   QScriptValue data()
+=item  QScriptValue data()
 
-=item   QScriptEngine * engine()
+=item  QScriptEngine * engine()
 
-=item   bool equals(const QScriptValue & other)
+=item  bool equals()
 
-=item   bool instanceOf(const QScriptValue & other)
+=item  bool instanceOf()
 
-=item   bool isArray()
+=item  bool isArray()
 
-=item   bool isBool()
+=item  bool isBool()
 
-=item   bool isBoolean()
+=item  bool isBoolean()
 
-=item   bool isDate()
+=item  bool isDate()
 
-=item   bool isError()
+=item  bool isError()
 
-=item   bool isFunction()
+=item  bool isFunction()
 
-=item   bool isNull()
+=item  bool isNull()
 
-=item   bool isNumber()
+=item  bool isNumber()
 
-=item   bool isObject()
+=item  bool isObject()
 
-=item   bool isQMetaObject()
+=item  bool isQMetaObject()
 
-=item   bool isQObject()
+=item  bool isQObject()
 
-=item   bool isRegExp()
+=item  bool isRegExp()
 
-=item   bool isString()
+=item  bool isString()
 
-=item   bool isUndefined()
+=item  bool isUndefined()
 
-=item   bool isValid()
+=item  bool isValid()
 
-=item   bool isVariant()
+=item  bool isVariant()
 
-=item   bool lessThan(const QScriptValue & other)
+=item  bool lessThan()
 
-=item   qint64 objectId()
+=item  qint64 objectId()
 
-=item   QScriptValue & operator=(const QScriptValue & other)
+=item  QScriptValue & operator=()
 
-=item   QScriptValue prototype()
+=item  QScriptValue property(, )
 
-=item   QScriptValue scope()
+=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
 
-=item   QScriptClass * scriptClass()
+=item  QScriptValue property(, )
 
-=item   void setData(const QScriptValue & data)
+=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
 
-=item   void setPrototype(const QScriptValue & prototype)
+=item  QScriptValue property(, )
 
-=item   void setScope(const QScriptValue & scope)
+=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
 
-=item   void setScriptClass(QScriptClass * scriptClass)
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
 
-=item   bool strictlyEquals(const QScriptValue & other)
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
 
-=item   bool toBool()
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
 
-=item   bool toBoolean()
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
 
-=item   QDateTime toDateTime()
+=item  QScriptValue prototype()
 
-=item   qint32 toInt32()
+=item  QScriptValue scope()
 
-=item   double toInteger()
+=item  QScriptClass * scriptClass()
 
-=item   double toNumber()
+=item  void setData()
 
-=item   QScriptValue toObject()
+=item  void setProperty(, , )
 
-=item   const QMetaObject * toQMetaObject()
+=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
 
-=item   QObject * toQObject()
+=item  void setProperty(, , )
 
-=item   QRegExp toRegExp()
+=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
 
-=item   QString toString()
+=item  void setProperty(, , )
 
-=item   quint16 toUInt16()
+=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
 
-=item   quint32 toUInt32()
+=item  void setPrototype()
 
-=item   QVariant toVariant()
+=item  void setScope()
+
+=item  void setScriptClass()
+
+=item  bool strictlyEquals()
+
+=item  bool toBool()
+
+=item  bool toBoolean()
+
+=item  QDateTime toDateTime()
+
+=item  qint32 toInt32()
+
+=item  double toInteger()
+
+=item  double toNumber()
+
+=item  QScriptValue toObject()
+
+=item  const QMetaObject * toQMetaObject()
+
+=item  QObject * toQObject()
+
+=item  QRegExp toRegExp()
+
+=item  QString toString()
+
+=item  quint16 toUInt16()
+
+=item  quint32 toUInt32()
+
+=item  QVariant toVariant()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item ResolveLocal
+
+=item ResolvePrototype
+
+=item ResolveScope
+
+=item ResolveFull
+
+=item ReadOnly
+
+=item Undeletable
+
+=item SkipInEnumeration
+
+=item PropertyGetter
+
+=item PropertySetter
+
+=item QObjectMember
+
+=item KeepExistingFlags
+
+=item UserRange
+
+=item NullValue
+
+=item UndefinedValue
 
 
 =back

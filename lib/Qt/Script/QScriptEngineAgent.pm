@@ -7,14 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub DebuggerInvocationRequest() { 0 }
 
 
 1;
@@ -27,35 +23,44 @@ Qt::Script::QScriptEngineAgent
 
 =over
 
-=item    QScriptEngineAgent(QScriptEngine * engine)
+=item   QScriptEngineAgent()
 
-=item    ~QScriptEngineAgent()
+=item   ~QScriptEngineAgent()
 
-=item   void contextPop()
+=item  void contextPop()
 
-=item   void contextPush()
+=item  void contextPush()
 
-=item   QScriptEngine * engine()
+=item  QScriptEngine * engine()
 
-=item   void exceptionCatch(qint64 scriptId, const QScriptValue & exception)
+=item  void exceptionCatch(, )
 
-=item   void exceptionThrow(qint64 scriptId, const QScriptValue & exception, bool hasHandler)
+=item  void exceptionThrow(, , )
 
-=item   QVariant extension(QScriptEngineAgent::Extension extension, const QVariant & argument = QVariant())
+=item  QVariant extension(, )
 
-=item   QVariant extension(QScriptEngineAgent::Extension extension, const QVariant & argument)
+=item  QVariant extension(,  = QVariant())
 
-=item   void functionEntry(qint64 scriptId)
+=item  void functionEntry()
 
-=item   void functionExit(qint64 scriptId, const QScriptValue & returnValue)
+=item  void functionExit(, )
 
-=item   void positionChange(qint64 scriptId, int lineNumber, int columnNumber)
+=item  void positionChange(, , )
 
-=item   void scriptLoad(qint64 id, const QString & program, const QString & fileName, int baseLineNumber)
+=item  void scriptLoad(, , , )
 
-=item   void scriptUnload(qint64 id)
+=item  void scriptUnload()
 
-=item   bool supportsExtension(QScriptEngineAgent::Extension extension)
+=item  bool supportsExtension()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item DebuggerInvocationRequest
 
 
 =back

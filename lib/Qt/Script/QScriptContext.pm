@@ -7,21 +7,10 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 
 # FIXME: operator overload
-
-# enums
-# enum value in perl is enum item index number
-sub NormalState() { 0 }
-sub ExceptionState() { 1 }
-sub UnknownError() { 0 }
-sub ReferenceError() { 1 }
-sub SyntaxError() { 2 }
-sub TypeError() { 3 }
-sub RangeError() { 4 }
-sub URIError() { 5 }
 
 
 1;
@@ -34,49 +23,72 @@ Qt::Script::QScriptContext
 
 =over
 
-=item    ~QScriptContext()
+=item   ~QScriptContext()
 
-=item   QScriptValue activationObject()
+=item  QScriptValue activationObject()
 
-=item   QScriptValue argument(int index)
+=item  QScriptValue argument()
 
-=item   int argumentCount()
+=item  int argumentCount()
 
-=item   QScriptValue argumentsObject()
+=item  QScriptValue argumentsObject()
 
-=item   QStringList backtrace()
+=item  QStringList backtrace()
 
-=item   QScriptValue callee()
+=item  QScriptValue callee()
 
-=item   QScriptEngine * engine()
+=item  QScriptEngine * engine()
 
-=item   bool isCalledAsConstructor()
+=item  bool isCalledAsConstructor()
 
-=item   QScriptContext * parentContext()
+=item  QScriptContext * parentContext()
 
-=item   QScriptValue popScope()
+=item  QScriptValue popScope()
 
-=item   void pushScope(const QScriptValue & object)
+=item  void pushScope()
 
-=item   QScriptValue returnValue()
+=item  QScriptValue returnValue()
 
-=item   void setActivationObject(const QScriptValue & activation)
+=item  void setActivationObject()
 
-=item   void setReturnValue(const QScriptValue & result)
+=item  void setReturnValue()
 
-=item   void setThisObject(const QScriptValue & thisObject)
+=item  void setThisObject()
 
-=item   QScriptContext::ExecutionState state()
+=item  QScriptContext::ExecutionState state()
 
-=item   QScriptValue thisObject()
+=item  QScriptValue thisObject()
 
-=item   QScriptValue throwError(const QString & text)
+=item  QScriptValue throwError()
 
-=item   QScriptValue throwError(QScriptContext::Error error, const QString & text)
+=item  QScriptValue throwError(, )
 
-=item   QScriptValue throwValue(const QScriptValue & value)
+=item  QScriptValue throwValue()
 
-=item   QString toString()
+=item  QString toString()
+
+
+=back
+
+=head1 ENUM VALUES
+
+=over
+
+=item NormalState
+
+=item ExceptionState
+
+=item UnknownError
+
+=item ReferenceError
+
+=item SyntaxError
+
+=item TypeError
+
+=item RangeError
+
+=item URIError
 
 
 =back

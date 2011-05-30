@@ -8,19 +8,21 @@ QSysInfo *                              		T_PTROBJ_0004
 QTime *                                 		T_PTROBJ_0005
 QFlag *                                 		T_PTROBJ_0006
 QDate *                                 		T_PTROBJ_0007
-QScriptExtensionInterface *             		T_PTROBJ_0008
-QScriptable *                           		T_PTROBJ_0009
-QIncompatibleFlag *                     		T_PTROBJ_0010
-QInternal *                             		T_PTROBJ_0011
-QScriptEngine *                         		T_PTROBJ_0012
-QScriptClass *                          		T_PTROBJ_0013
-QScriptValueIterator *                  		T_PTROBJ_0014
-QScriptString *                         		T_PTROBJ_0015
-QScriptClassPropertyIterator *          		T_PTROBJ_0016
-QScriptValue *                          		T_PTROBJ_0017
-QScriptSyntaxCheckResult *              		T_PTROBJ_0018
-QScriptEngineAgent *                    		T_PTROBJ_0019
-QBool *                                 		T_PTROBJ_0020
+Qt *                                    		T_PTROBJ_0008
+QScriptExtensionInterface *             		T_PTROBJ_0009
+QScriptable *                           		T_PTROBJ_0010
+QIncompatibleFlag *                     		T_PTROBJ_0011
+QInternal *                             		T_PTROBJ_0012
+QScriptEngine *                         		T_PTROBJ_0013
+QScriptClass *                          		T_PTROBJ_0014
+QScriptValueIterator *                  		T_PTROBJ_0015
+QScriptString *                         		T_PTROBJ_0016
+QScriptClassPropertyIterator *          		T_PTROBJ_0017
+QScriptExtensionPlugin *                		T_PTROBJ_0018
+QScriptValue *                          		T_PTROBJ_0019
+QScriptSyntaxCheckResult *              		T_PTROBJ_0020
+QScriptEngineAgent *                    		T_PTROBJ_0021
+QBool *                                 		T_PTROBJ_0022
 
 ################################################################
 INPUT
@@ -73,78 +75,90 @@ T_PTROBJ_0007
         Perl_croak(aTHX_ \"$var is not of type Qt::Core::QDate\");
 
 T_PTROBJ_0008
+    if (sv_derived_from($arg, \"Qt\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt\");
+
+T_PTROBJ_0009
     if (sv_derived_from($arg, \"Qt::Script::QScriptExtensionInterface\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptExtensionInterface\");
 
-T_PTROBJ_0009
+T_PTROBJ_0010
     if (sv_derived_from($arg, \"Qt::Script::QScriptable\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptable\");
 
-T_PTROBJ_0010
+T_PTROBJ_0011
     if (sv_derived_from($arg, \"Qt::Core::QIncompatibleFlag\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Core::QIncompatibleFlag\");
 
-T_PTROBJ_0011
+T_PTROBJ_0012
     if (sv_derived_from($arg, \"Qt::Core::QInternal\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Core::QInternal\");
 
-T_PTROBJ_0012
+T_PTROBJ_0013
     if (sv_derived_from($arg, \"Qt::Script::QScriptEngine\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptEngine\");
 
-T_PTROBJ_0013
+T_PTROBJ_0014
     if (sv_derived_from($arg, \"Qt::Script::QScriptClass\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptClass\");
 
-T_PTROBJ_0014
+T_PTROBJ_0015
     if (sv_derived_from($arg, \"Qt::Script::QScriptValueIterator\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptValueIterator\");
 
-T_PTROBJ_0015
+T_PTROBJ_0016
     if (sv_derived_from($arg, \"Qt::Script::QScriptString\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptString\");
 
-T_PTROBJ_0016
+T_PTROBJ_0017
     if (sv_derived_from($arg, \"Qt::Script::QScriptClassPropertyIterator\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptClassPropertyIterator\");
 
-T_PTROBJ_0017
+T_PTROBJ_0018
+    if (sv_derived_from($arg, \"Qt::Script::QScriptExtensionPlugin\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptExtensionPlugin\");
+
+T_PTROBJ_0019
     if (sv_derived_from($arg, \"Qt::Script::QScriptValue\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptValue\");
 
-T_PTROBJ_0018
+T_PTROBJ_0020
     if (sv_derived_from($arg, \"Qt::Script::QScriptSyntaxCheckResult\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptSyntaxCheckResult\");
 
-T_PTROBJ_0019
+T_PTROBJ_0021
     if (sv_derived_from($arg, \"Qt::Script::QScriptEngineAgent\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Script::QScriptEngineAgent\");
 
-T_PTROBJ_0020
+T_PTROBJ_0022
     if (sv_derived_from($arg, \"Qt::Core::QBool\"))
         $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
     else
@@ -178,41 +192,47 @@ T_PTROBJ_0007
     sv_setref_pv($arg, \"Qt::Core::QDate\", (void *)$var);
 
 T_PTROBJ_0008
-    sv_setref_pv($arg, \"Qt::Script::QScriptExtensionInterface\", (void *)$var);
+    sv_setref_pv($arg, \"Qt\", (void *)$var);
 
 T_PTROBJ_0009
-    sv_setref_pv($arg, \"Qt::Script::QScriptable\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptExtensionInterface\", (void *)$var);
 
 T_PTROBJ_0010
-    sv_setref_pv($arg, \"Qt::Core::QIncompatibleFlag\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptable\", (void *)$var);
 
 T_PTROBJ_0011
-    sv_setref_pv($arg, \"Qt::Core::QInternal\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Core::QIncompatibleFlag\", (void *)$var);
 
 T_PTROBJ_0012
-    sv_setref_pv($arg, \"Qt::Script::QScriptEngine\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Core::QInternal\", (void *)$var);
 
 T_PTROBJ_0013
-    sv_setref_pv($arg, \"Qt::Script::QScriptClass\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptEngine\", (void *)$var);
 
 T_PTROBJ_0014
-    sv_setref_pv($arg, \"Qt::Script::QScriptValueIterator\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptClass\", (void *)$var);
 
 T_PTROBJ_0015
-    sv_setref_pv($arg, \"Qt::Script::QScriptString\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptValueIterator\", (void *)$var);
 
 T_PTROBJ_0016
-    sv_setref_pv($arg, \"Qt::Script::QScriptClassPropertyIterator\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptString\", (void *)$var);
 
 T_PTROBJ_0017
-    sv_setref_pv($arg, \"Qt::Script::QScriptValue\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptClassPropertyIterator\", (void *)$var);
 
 T_PTROBJ_0018
-    sv_setref_pv($arg, \"Qt::Script::QScriptSyntaxCheckResult\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptExtensionPlugin\", (void *)$var);
 
 T_PTROBJ_0019
-    sv_setref_pv($arg, \"Qt::Script::QScriptEngineAgent\", (void *)$var);
+    sv_setref_pv($arg, \"Qt::Script::QScriptValue\", (void *)$var);
 
 T_PTROBJ_0020
+    sv_setref_pv($arg, \"Qt::Script::QScriptSyntaxCheckResult\", (void *)$var);
+
+T_PTROBJ_0021
+    sv_setref_pv($arg, \"Qt::Script::QScriptEngineAgent\", (void *)$var);
+
+T_PTROBJ_0022
     sv_setref_pv($arg, \"Qt::Core::QBool\", (void *)$var);
 
