@@ -7,8 +7,9 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
-our $ISA     = qw/Qt::Core::QObject Qt::Script::QScriptExtensionInterface/;
+our $VERSION = '0.01_03';
+use base qw/Qt::Script::QScriptExtensionInterface/;
+#our @ISA = qw/Qt::Script::QScriptExtensionInterface/;
 
 
 # FIXME: operator overload
@@ -24,17 +25,17 @@ Qt::Script::QScriptExtensionPlugin
 
 =over
 
-=item   QScriptExtensionPlugin()
+=item   QScriptExtensionPlugin(QObject * parent)
 
-=item   QScriptExtensionPlugin( = 0)
+=item   QScriptExtensionPlugin(QObject * parent = 0)
 
 =item   ~QScriptExtensionPlugin()
 
-=item  void initialize(, )
+=item  void initialize(const QString & key, QScriptEngine * engine)
 
 =item  QStringList keys()
 
-=item  QScriptValue setupPackage(, )
+=item  QScriptValue setupPackage(const QString & key, QScriptEngine * engine)
 
 
 =back

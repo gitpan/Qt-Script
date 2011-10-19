@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,13 +25,13 @@ Qt::Script::QScriptProgram
 
 =item   QScriptProgram()
 
-=item   QScriptProgram()
+=item   QScriptProgram(const QScriptProgram & other)
 
-=item   QScriptProgram(, , )
+=item   QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber)
 
-=item   QScriptProgram(, ,  = 1)
+=item   QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber = 1)
 
-=item   QScriptProgram(,  = QString(),  = 1)
+=item   QScriptProgram(const QString & sourceCode, const QString fileName = QString(), int firstLineNumber = 1)
 
 =item   ~QScriptProgram()
 
@@ -41,11 +41,11 @@ Qt::Script::QScriptProgram
 
 =item  bool isNull()
 
-=item  bool operator!=()
+=item  bool operator!=(const QScriptProgram & other)
 
-=item  QScriptProgram & operator=()
+=item  QScriptProgram & operator=(const QScriptProgram & other)
 
-=item  bool operator==()
+=item  bool operator==(const QScriptProgram & other)
 
 =item  QString sourceCode()
 

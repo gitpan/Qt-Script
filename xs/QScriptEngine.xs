@@ -19,7 +19,7 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QScriptEngine()
-##  QScriptEngine()
+##  QScriptEngine(QObject * parent)
   void
 QScriptEngine::new(...)
 PREINIT:
@@ -70,8 +70,8 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## void abortEvaluation()
-## void abortEvaluation( = QScriptValue())
+## void abortEvaluation(const QScriptValue & result)
+## void abortEvaluation(const QScriptValue & result = QScriptValue())
 void
 QScriptEngine::abortEvaluation(...)
 PREINIT:
@@ -131,7 +131,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool canEvaluate()
+## bool canEvaluate(const QString & program)
 void
 QScriptEngine::canEvaluate(...)
 PREINIT:
@@ -145,7 +145,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## static QScriptSyntaxCheckResult checkSyntax()
+## static QScriptSyntaxCheckResult checkSyntax(const QString & program)
 void
 QScriptEngine::checkSyntax(...)
 PREINIT:
@@ -194,7 +194,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue defaultPrototype()
+## QScriptValue defaultPrototype(int metaTypeId)
 void
 QScriptEngine::defaultPrototype(...)
 PREINIT:
@@ -208,10 +208,10 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue evaluate()
-## QScriptValue evaluate(, , )
-## QScriptValue evaluate(, ,  = 1)
-## QScriptValue evaluate(,  = QString(),  = 1)
+## QScriptValue evaluate(const QScriptProgram & program)
+## QScriptValue evaluate(const QString & program, const QString & fileName, int lineNumber)
+## QScriptValue evaluate(const QString & program, const QString & fileName, int lineNumber = 1)
+## QScriptValue evaluate(const QString & program, const QString & fileName = QString(), int lineNumber = 1)
 void
 QScriptEngine::evaluate(...)
 PREINIT:
@@ -308,7 +308,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue importExtension()
+## QScriptValue importExtension(const QString & extension)
 void
 QScriptEngine::importExtension(...)
 PREINIT:
@@ -335,8 +335,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void installTranslatorFunctions()
-## void installTranslatorFunctions( = QScriptValue())
+## void installTranslatorFunctions(const QScriptValue & object)
+## void installTranslatorFunctions(const QScriptValue & object = QScriptValue())
 void
 QScriptEngine::installTranslatorFunctions(...)
 PREINIT:
@@ -396,8 +396,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue newArray()
-## QScriptValue newArray( = 0)
+## QScriptValue newArray(uint length)
+## QScriptValue newArray(uint length = 0)
 void
 QScriptEngine::newArray(...)
 PREINIT:
@@ -418,7 +418,7 @@ PPCODE:
       }
       case 2:
       {
-        if (SvUOK(ST(1))) {
+        if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg00 = (uint)SvUV(ST(1));
     QScriptValue ret = THIS->newArray(arg00);
     ST(0) = sv_newmortal();
@@ -434,8 +434,8 @@ PPCODE:
         break;
     }
 
-## QScriptValue newDate()
-## QScriptValue newDate()
+## QScriptValue newDate(double value)
+## QScriptValue newDate(const QDateTime & value)
 void
 QScriptEngine::newDate(...)
 PREINIT:
@@ -468,11 +468,11 @@ PPCODE:
         break;
     }
 
-## QScriptValue newFunction(, )
-## QScriptValue newFunction(,  = 0)
-## QScriptValue newFunction(, )
-## QScriptValue newFunction(, , )
-## QScriptValue newFunction(, ,  = 0)
+## QScriptValue newFunction(QScriptEngine::FunctionSignature signature, int length)
+## QScriptValue newFunction(QScriptEngine::FunctionSignature signature, int length = 0)
+## QScriptValue newFunction(QScriptEngine::FunctionWithArgSignature signature, void * arg)
+## QScriptValue newFunction(QScriptEngine::FunctionSignature signature, const QScriptValue & prototype, int length)
+## QScriptValue newFunction(QScriptEngine::FunctionSignature signature, const QScriptValue & prototype, int length = 0)
 void
 QScriptEngine::newFunction(...)
 PREINIT:
@@ -554,8 +554,8 @@ PPCODE:
     }
 
 ## QScriptValue newObject()
-## QScriptValue newObject(, )
-## QScriptValue newObject(,  = QScriptValue())
+## QScriptValue newObject(QScriptClass * scriptClass, const QScriptValue & data)
+## QScriptValue newObject(QScriptClass * scriptClass, const QScriptValue & data = QScriptValue())
 void
 QScriptEngine::newObject(...)
 PREINIT:
@@ -623,8 +623,8 @@ PPCODE:
         break;
     }
 
-## QScriptValue newQMetaObject(, )
-## QScriptValue newQMetaObject(,  = QScriptValue())
+## QScriptValue newQMetaObject(const QMetaObject * metaObject, const QScriptValue & ctor)
+## QScriptValue newQMetaObject(const QMetaObject * metaObject, const QScriptValue & ctor = QScriptValue())
 void
 QScriptEngine::newQMetaObject(...)
 PREINIT:
@@ -681,12 +681,12 @@ PPCODE:
         break;
     }
 
-## QScriptValue newQObject(, , )
-## QScriptValue newQObject(, ,  = 0)
-## QScriptValue newQObject(,  = QScriptEngine::QtOwnership,  = 0)
-## QScriptValue newQObject(, , , )
-## QScriptValue newQObject(, , ,  = 0)
-## QScriptValue newQObject(, ,  = QScriptEngine::QtOwnership,  = 0)
+## QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
+## QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
+## QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
+## QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
+## QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
+## QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
 void
 QScriptEngine::newQObject(...)
 PREINIT:
@@ -839,8 +839,8 @@ PPCODE:
         break;
     }
 
-## QScriptValue newRegExp()
-## QScriptValue newRegExp(, )
+## QScriptValue newRegExp(const QRegExp & regexp)
+## QScriptValue newRegExp(const QString & pattern, const QString & flags)
 void
 QScriptEngine::newRegExp(...)
 PREINIT:
@@ -881,8 +881,8 @@ PPCODE:
         break;
     }
 
-## QScriptValue newVariant()
-## QScriptValue newVariant(, )
+## QScriptValue newVariant(const QVariant & value)
+## QScriptValue newVariant(const QScriptValue & object, const QVariant & value)
 void
 QScriptEngine::newVariant(...)
 PREINIT:
@@ -936,7 +936,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue objectById()
+## QScriptValue objectById(qint64 id)
 void
 QScriptEngine::objectById(...)
 PREINIT:
@@ -987,7 +987,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void reportAdditionalMemoryCost()
+## void reportAdditionalMemoryCost(int size)
 void
 QScriptEngine::reportAdditionalMemoryCost(...)
 PREINIT:
@@ -999,7 +999,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setAgent()
+## void setAgent(QScriptEngineAgent * agent)
 void
 QScriptEngine::setAgent(...)
 PREINIT:
@@ -1018,7 +1018,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setDefaultPrototype(, )
+## void setDefaultPrototype(int metaTypeId, const QScriptValue & prototype)
 void
 QScriptEngine::setDefaultPrototype(...)
 PREINIT:
@@ -1032,7 +1032,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setGlobalObject()
+## void setGlobalObject(const QScriptValue & object)
 void
 QScriptEngine::setGlobalObject(...)
 PREINIT:
@@ -1044,7 +1044,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setProcessEventsInterval()
+## void setProcessEventsInterval(int interval)
 void
 QScriptEngine::setProcessEventsInterval(...)
 PREINIT:
@@ -1056,7 +1056,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## QScriptValue toObject()
+## QScriptValue toObject(const QScriptValue & value)
 void
 QScriptEngine::toObject(...)
 PREINIT:
@@ -1070,7 +1070,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptString toStringHandle()
+## QScriptString toStringHandle(const QString & str)
 void
 QScriptEngine::toStringHandle(...)
 PREINIT:

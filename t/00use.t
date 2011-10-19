@@ -5,7 +5,7 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 15;
+use Test::More tests => 16;
 BEGIN {
 use_ok('Qt::Script');
 use_ok('Qt::Script');
@@ -17,6 +17,7 @@ use_ok('Qt::Script::QScriptString');
 use_ok('Qt::Script::QScriptContextInfo');
 use_ok('Qt::Script::QScriptValue');
 use_ok('Qt::Script::QScriptClass');
+use_ok('Qt::Script::QScriptExtensionInterface');
 use_ok('Qt::Script::QScriptable');
 use_ok('Qt::Script::QScriptEngineAgent');
 use_ok('Qt::Script::QScriptSyntaxCheckResult');

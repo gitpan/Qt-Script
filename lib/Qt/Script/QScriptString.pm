@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,7 +25,7 @@ Qt::Script::QScriptString
 
 =item   QScriptString()
 
-=item   QScriptString()
+=item   QScriptString(const QScriptString & other)
 
 =item   ~QScriptString()
 
@@ -33,15 +33,15 @@ Qt::Script::QScriptString
 
 =item  QString operator QString()
 
-=item  bool operator!=()
+=item  bool operator!=(const QScriptString & other)
 
-=item  QScriptString & operator=()
+=item  QScriptString & operator=(const QScriptString & other)
 
-=item  bool operator==()
+=item  bool operator==(const QScriptString & other)
 
-=item  quint32 toArrayIndex()
+=item  quint32 toArrayIndex(bool * ok)
 
-=item  quint32 toArrayIndex( = 0)
+=item  quint32 toArrayIndex(bool * ok = 0)
 
 =item  QString toString()
 

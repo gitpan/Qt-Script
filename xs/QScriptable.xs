@@ -39,7 +39,7 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## QScriptValue argument()
+## QScriptValue argument(int index)
 void
 QScriptable::argument(...)
 PREINIT:

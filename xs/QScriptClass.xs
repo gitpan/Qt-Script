@@ -18,7 +18,7 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QScriptClass()
+##  QScriptClass(QScriptEngine * engine)
   void
 QScriptClass::new(...)
 PREINIT:
@@ -60,8 +60,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QVariant extension(, )
-## QVariant extension(,  = QVariant())
+## QVariant extension(QScriptClass::Extension extension, const QVariant & argument)
+## QVariant extension(QScriptClass::Extension extension, const QVariant & argument = QVariant())
 void
 QScriptClass::extension(...)
 PREINIT:
@@ -117,7 +117,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptClassPropertyIterator * newIterator()
+## QScriptClassPropertyIterator * newIterator(const QScriptValue & object)
 void
 QScriptClass::newIterator(...)
 PREINIT:
@@ -131,7 +131,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue property(, , )
+## QScriptValue property(const QScriptValue & object, const QScriptString & name, uint id)
 void
 QScriptClass::property(...)
 PREINIT:
@@ -139,7 +139,7 @@ QScriptValue * arg00;
 QScriptString * arg01;
 uint arg02;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvUOK(ST(3))) {
+    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(2))));
       arg02 = (uint)SvUV(ST(3));
@@ -149,7 +149,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(, , )
+## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptValue & object, const QScriptString & name, uint id)
 void
 QScriptClass::propertyFlags(...)
 PREINIT:
@@ -157,7 +157,7 @@ QScriptValue * arg00;
 QScriptString * arg01;
 uint arg02;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvUOK(ST(3))) {
+    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && (SvIOK(ST(3)) || SvUOK(ST(3)))) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(2))));
       arg02 = (uint)SvUV(ST(3));
@@ -180,7 +180,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QFlags<QScriptClass::QueryFlag> queryProperty(, , , )
+## QFlags<QScriptClass::QueryFlag> queryProperty(const QScriptValue & object, const QScriptString & name, QFlags<QScriptClass::QueryFlag> flags, uint * id)
 void
 QScriptClass::queryProperty(...)
 PREINIT:
@@ -189,7 +189,7 @@ QScriptString * arg01;
 QFlags<QScriptClass::QueryFlag> arg02;
 uint * arg03;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvIOK(ST(3)) && SvUOK(ST(4))) {
+    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvIOK(ST(3)) && (SvIOK(ST(4)) || SvUOK(ST(4)))) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(2))));
       arg02 = QFlags<QScriptClass::QueryFlag>((int)SvIV(ST(3)));
@@ -203,7 +203,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setProperty(, , , )
+## void setProperty(QScriptValue & object, const QScriptString & name, uint id, const QScriptValue & value)
 void
 QScriptClass::setProperty(...)
 PREINIT:
@@ -212,7 +212,7 @@ QScriptString * arg01;
 uint arg02;
 QScriptValue * arg03;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvUOK(ST(3)) && sv_isa(ST(4), "Qt::Script::QScriptValue")) {
+    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && (SvIOK(ST(3)) || SvUOK(ST(3))) && sv_isa(ST(4), "Qt::Script::QScriptValue")) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(2))));
       arg02 = (uint)SvUV(ST(3));
@@ -221,7 +221,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## bool supportsExtension()
+## bool supportsExtension(QScriptClass::Extension extension)
 void
 QScriptClass::supportsExtension(...)
 PREINIT:

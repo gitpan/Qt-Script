@@ -19,8 +19,8 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QScriptContextInfo()
-##  QScriptContextInfo()
-##  QScriptContextInfo()
+##  QScriptContextInfo(const QScriptContext * context)
+##  QScriptContextInfo(const QScriptContextInfo & other)
   void
 QScriptContextInfo::new(...)
 PREINIT:
@@ -209,7 +209,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator!=()
+## bool operator!=(const QScriptContextInfo & other)
 void
 QScriptContextInfo::operator_not_equal(...)
 PREINIT:
@@ -223,7 +223,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptContextInfo & operator=()
+## QScriptContextInfo & operator=(const QScriptContextInfo & other)
 void
 QScriptContextInfo::operator_assign(...)
 PREINIT:
@@ -237,7 +237,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator==()
+## bool operator==(const QScriptContextInfo & other)
 void
 QScriptContextInfo::operator_equal_to(...)
 PREINIT:

@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,9 +25,9 @@ Qt::Script::QScriptContextInfo
 
 =item   QScriptContextInfo()
 
-=item   QScriptContextInfo()
+=item   QScriptContextInfo(const QScriptContext * context)
 
-=item   QScriptContextInfo()
+=item   QScriptContextInfo(const QScriptContextInfo & other)
 
 =item   ~QScriptContextInfo()
 
@@ -51,11 +51,11 @@ Qt::Script::QScriptContextInfo
 
 =item  int lineNumber()
 
-=item  bool operator!=()
+=item  bool operator!=(const QScriptContextInfo & other)
 
-=item  QScriptContextInfo & operator=()
+=item  QScriptContextInfo & operator=(const QScriptContextInfo & other)
 
-=item  bool operator==()
+=item  bool operator==(const QScriptContextInfo & other)
 
 =item  qint64 scriptId()
 

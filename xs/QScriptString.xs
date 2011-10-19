@@ -19,7 +19,7 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QScriptString()
-##  QScriptString()
+##  QScriptString(const QScriptString & other)
   void
 QScriptString::new(...)
 PREINIT:
@@ -89,7 +89,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator!=()
+## bool operator!=(const QScriptString & other)
 void
 QScriptString::operator_not_equal(...)
 PREINIT:
@@ -103,7 +103,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptString & operator=()
+## QScriptString & operator=(const QScriptString & other)
 void
 QScriptString::operator_assign(...)
 PREINIT:
@@ -117,7 +117,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator==()
+## bool operator==(const QScriptString & other)
 void
 QScriptString::operator_equal_to(...)
 PREINIT:
@@ -131,8 +131,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## quint32 toArrayIndex()
-## quint32 toArrayIndex( = 0)
+## quint32 toArrayIndex(bool * ok)
+## quint32 toArrayIndex(bool * ok = 0)
 void
 QScriptString::toArrayIndex(...)
 PREINIT:

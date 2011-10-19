@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -25,51 +25,51 @@ Qt::Script::QScriptValue
 
 =item   QScriptValue()
 
-=item   QScriptValue()
+=item   QScriptValue(const QScriptValue & other)
 
-=item   QScriptValue()
+=item   QScriptValue(QScriptValue::SpecialValue value)
 
-=item   QScriptValue()
+=item   QScriptValue(bool value)
 
-=item   QScriptValue()
+=item   QScriptValue(int value)
 
-=item   QScriptValue()
+=item   QScriptValue(uint value)
 
-=item   QScriptValue()
+=item   QScriptValue(double value)
 
-=item   QScriptValue()
+=item   QScriptValue(const QString & value)
 
-=item   QScriptValue()
+=item   QScriptValue(const QLatin1String & value)
 
-=item   QScriptValue()
+=item   QScriptValue(const char * value)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, QScriptValue::SpecialValue val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, bool val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, int val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, uint val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, double val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, const QString & val)
 
-=item   QScriptValue(, )
+=item   QScriptValue(QScriptEngine * engine, const char * val)
 
 =item   ~QScriptValue()
 
-=item  QScriptValue call(, )
+=item  QScriptValue call(const QScriptValue & thisObject, const QScriptValue & arguments)
 
-=item  QScriptValue construct()
+=item  QScriptValue construct(const QScriptValue & arguments)
 
 =item  QScriptValue data()
 
 =item  QScriptEngine * engine()
 
-=item  bool equals()
+=item  bool equals(const QScriptValue & other)
 
-=item  bool instanceOf()
+=item  bool instanceOf(const QScriptValue & other)
 
 =item  bool isArray()
 
@@ -103,31 +103,31 @@ Qt::Script::QScriptValue
 
 =item  bool isVariant()
 
-=item  bool lessThan()
+=item  bool lessThan(const QScriptValue & other)
 
 =item  qint64 objectId()
 
-=item  QScriptValue & operator=()
+=item  QScriptValue & operator=(const QScriptValue & other)
 
-=item  QScriptValue property(, )
+=item  QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
 
-=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
+=item  QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 
-=item  QScriptValue property(, )
+=item  QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode)
 
-=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
+=item  QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 
-=item  QScriptValue property(, )
+=item  QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
 
-=item  QScriptValue property(,  = QScriptValue::ResolvePrototype)
+=item  QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
 
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
 
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 
 =item  QScriptValue prototype()
 
@@ -135,27 +135,27 @@ Qt::Script::QScriptValue
 
 =item  QScriptClass * scriptClass()
 
-=item  void setData()
+=item  void setData(const QScriptValue & data)
 
-=item  void setProperty(, , )
+=item  void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
 
-=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
+=item  void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
 
-=item  void setProperty(, , )
+=item  void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
 
-=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
+=item  void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
 
-=item  void setProperty(, , )
+=item  void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
 
-=item  void setProperty(, ,  = QScriptValue::KeepExistingFlags)
+=item  void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
 
-=item  void setPrototype()
+=item  void setPrototype(const QScriptValue & prototype)
 
-=item  void setScope()
+=item  void setScope(const QScriptValue & scope)
 
-=item  void setScriptClass()
+=item  void setScriptClass(QScriptClass * scriptClass)
 
-=item  bool strictlyEquals()
+=item  bool strictlyEquals(const QScriptValue & other)
 
 =item  bool toBool()
 

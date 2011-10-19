@@ -19,22 +19,22 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue()
-##  QScriptValue(, )
-##  QScriptValue(, )
-##  QScriptValue(, )
-##  QScriptValue(, )
-##  QScriptValue(, )
-##  QScriptValue(, )
-##  QScriptValue(, )
+##  QScriptValue(const QScriptValue & other)
+##  QScriptValue(QScriptValue::SpecialValue value)
+##  QScriptValue(bool value)
+##  QScriptValue(int value)
+##  QScriptValue(uint value)
+##  QScriptValue(double value)
+##  QScriptValue(const QString & value)
+##  QScriptValue(const QLatin1String & value)
+##  QScriptValue(const char * value)
+##  QScriptValue(QScriptEngine * engine, QScriptValue::SpecialValue val)
+##  QScriptValue(QScriptEngine * engine, bool val)
+##  QScriptValue(QScriptEngine * engine, int val)
+##  QScriptValue(QScriptEngine * engine, uint val)
+##  QScriptValue(QScriptEngine * engine, double val)
+##  QScriptValue(QScriptEngine * engine, const QString & val)
+##  QScriptValue(QScriptEngine * engine, const char * val)
   void
 QScriptValue::new(...)
 PREINIT:
@@ -105,7 +105,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)ret);
     XSRETURN(1);
     }
-        else if (SvUOK(ST(1))) {
+        else if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg50 = (uint)SvUV(ST(1));
     ret = new QScriptValue(arg50);
     ST(0) = sv_newmortal();
@@ -191,7 +191,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)ret);
     XSRETURN(1);
     }
-        else if ((sv_derived_from(ST(1), "Qt::Script::QScriptEngine") || ST(1) == &PL_sv_undef) && SvUOK(ST(2))) {
+        else if ((sv_derived_from(ST(1), "Qt::Script::QScriptEngine") || ST(1) == &PL_sv_undef) && (SvIOK(ST(2)) || SvUOK(ST(2)))) {
       if (sv_derived_from(ST(1), "Qt::Script::QScriptEngine")) {
         argd0 = reinterpret_cast<QScriptEngine *>(SvIV((SV*)SvRV(ST(1))));
     }
@@ -267,7 +267,7 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## QScriptValue call(, )
+## QScriptValue call(const QScriptValue & thisObject, const QScriptValue & arguments)
 void
 QScriptValue::call(...)
 PREINIT:
@@ -283,7 +283,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue construct()
+## QScriptValue construct(const QScriptValue & arguments)
 void
 QScriptValue::construct(...)
 PREINIT:
@@ -323,7 +323,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool equals()
+## bool equals(const QScriptValue & other)
 void
 QScriptValue::equals(...)
 PREINIT:
@@ -337,7 +337,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool instanceOf()
+## bool instanceOf(const QScriptValue & other)
 void
 QScriptValue::instanceOf(...)
 PREINIT:
@@ -559,7 +559,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool lessThan()
+## bool lessThan(const QScriptValue & other)
 void
 QScriptValue::lessThan(...)
 PREINIT:
@@ -586,7 +586,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue & operator=()
+## QScriptValue & operator=(const QScriptValue & other)
 void
 QScriptValue::operator_assign(...)
 PREINIT:
@@ -600,12 +600,12 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue property(, )
-## QScriptValue property(,  = QScriptValue::ResolvePrototype)
-## QScriptValue property(, )
-## QScriptValue property(,  = QScriptValue::ResolvePrototype)
-## QScriptValue property(, )
-## QScriptValue property(,  = QScriptValue::ResolvePrototype)
+## QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
+## QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
+## QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode)
+## QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
+## QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
+## QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 void
 QScriptValue::property(...)
 PREINIT:
@@ -635,7 +635,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
     XSRETURN(1);
     }
-        else if (SvUOK(ST(1))) {
+        else if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
       arg30 = (quint32)SvUV(ST(1));
     QScriptValue ret = THIS->property(arg30, *arg31);
     ST(0) = sv_newmortal();
@@ -663,7 +663,7 @@ PPCODE:
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
     XSRETURN(1);
     }
-        else if (SvUOK(ST(1)) && sv_isa(ST(2), "")) {
+        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "")) {
       arg20 = (quint32)SvUV(ST(1));
       arg21 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
     QScriptValue ret = THIS->property(arg20, *arg21);
@@ -688,10 +688,10 @@ PPCODE:
         break;
     }
 
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(, )
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(,  = QScriptValue::ResolvePrototype)
+## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
+## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
+## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
+## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
 void
 QScriptValue::propertyFlags(...)
 PREINIT:
@@ -793,7 +793,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setData()
+## void setData(const QScriptValue & data)
 void
 QScriptValue::setData(...)
 PREINIT:
@@ -805,12 +805,12 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setProperty(, , )
-## void setProperty(, ,  = QScriptValue::KeepExistingFlags)
-## void setProperty(, , )
-## void setProperty(, ,  = QScriptValue::KeepExistingFlags)
-## void setProperty(, , )
-## void setProperty(, ,  = QScriptValue::KeepExistingFlags)
+## void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
+## void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
+## void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
+## void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
+## void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
+## void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
 void
 QScriptValue::setProperty(...)
 PREINIT:
@@ -845,7 +845,7 @@ PPCODE:
     (void)THIS->setProperty(*arg10, *arg11, *arg12);
     XSRETURN(0);
     }
-        else if (SvUOK(ST(1)) && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
+        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
       arg30 = (quint32)SvUV(ST(1));
       arg31 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
     (void)THIS->setProperty(arg30, *arg31, *arg32);
@@ -870,7 +870,7 @@ PPCODE:
     (void)THIS->setProperty(*arg00, *arg01, *arg02);
     XSRETURN(0);
     }
-        else if (SvUOK(ST(1)) && sv_isa(ST(2), "Qt::Script::QScriptValue") && sv_isa(ST(3), "")) {
+        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "Qt::Script::QScriptValue") && sv_isa(ST(3), "")) {
       arg20 = (quint32)SvUV(ST(1));
       arg21 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
       arg22 = reinterpret_cast<QFlags<QScriptValue::PropertyFlag> *>(SvIV((SV*)SvRV(ST(3))));
@@ -893,7 +893,7 @@ PPCODE:
         break;
     }
 
-## void setPrototype()
+## void setPrototype(const QScriptValue & prototype)
 void
 QScriptValue::setPrototype(...)
 PREINIT:
@@ -905,7 +905,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setScope()
+## void setScope(const QScriptValue & scope)
 void
 QScriptValue::setScope(...)
 PREINIT:
@@ -917,7 +917,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setScriptClass()
+## void setScriptClass(QScriptClass * scriptClass)
 void
 QScriptValue::setScriptClass(...)
 PREINIT:
@@ -936,7 +936,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## bool strictlyEquals()
+## bool strictlyEquals(const QScriptValue & other)
 void
 QScriptValue::strictlyEquals(...)
 PREINIT:

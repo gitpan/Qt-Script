@@ -1,7 +1,7 @@
-package Qt::Script::QScriptClassPropertyIterator;
+package Qt::Script::QScriptExtensionInterface;
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
-# classname: QScriptClassPropertyIterator
-# file     : QtScript/qscriptclasspropertyiterator.h
+# classname: QScriptExtensionInterface
+# file     : QtScript/qscriptextensioninterface.h
 
 use strict;
 use warnings;
@@ -17,33 +17,11 @@ our $VERSION = '0.01_03';
 
 =head1 NAME
 
-Qt::Script::QScriptClassPropertyIterator
+Qt::Script::QScriptExtensionInterface
 
 =head1 PUBLIC METHODS
 
 =over
-
-=item   ~QScriptClassPropertyIterator()
-
-=item  QFlags<QScriptValue::PropertyFlag> flags()
-
-=item  bool hasNext()
-
-=item  bool hasPrevious()
-
-=item  uint id()
-
-=item  QScriptString name()
-
-=item  void next()
-
-=item  QScriptValue object()
-
-=item  void previous()
-
-=item  void toBack()
-
-=item  void toFront()
 
 
 =back

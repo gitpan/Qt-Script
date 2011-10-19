@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -23,7 +23,7 @@ Qt::Script::QScriptValueIterator
 
 =over
 
-=item   QScriptValueIterator()
+=item   QScriptValueIterator(const QScriptValue & value)
 
 =item   ~QScriptValueIterator()
 
@@ -37,7 +37,7 @@ Qt::Script::QScriptValueIterator
 
 =item  void next()
 
-=item  QScriptValueIterator & operator=()
+=item  QScriptValueIterator & operator=(QScriptValue & value)
 
 =item  void previous()
 
@@ -45,7 +45,7 @@ Qt::Script::QScriptValueIterator
 
 =item  QScriptString scriptName()
 
-=item  void setValue()
+=item  void setValue(const QScriptValue & value)
 
 =item  void toBack()
 

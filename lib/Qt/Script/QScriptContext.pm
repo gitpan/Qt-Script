@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -27,7 +27,7 @@ Qt::Script::QScriptContext
 
 =item  QScriptValue activationObject()
 
-=item  QScriptValue argument()
+=item  QScriptValue argument(int index)
 
 =item  int argumentCount()
 
@@ -45,25 +45,25 @@ Qt::Script::QScriptContext
 
 =item  QScriptValue popScope()
 
-=item  void pushScope()
+=item  void pushScope(const QScriptValue & object)
 
 =item  QScriptValue returnValue()
 
-=item  void setActivationObject()
+=item  void setActivationObject(const QScriptValue & activation)
 
-=item  void setReturnValue()
+=item  void setReturnValue(const QScriptValue & result)
 
-=item  void setThisObject()
+=item  void setThisObject(const QScriptValue & thisObject)
 
 =item  QScriptContext::ExecutionState state()
 
 =item  QScriptValue thisObject()
 
-=item  QScriptValue throwError()
+=item  QScriptValue throwError(const QString & text)
 
-=item  QScriptValue throwError(, )
+=item  QScriptValue throwError(QScriptContext::Error error, const QString & text)
 
-=item  QScriptValue throwValue()
+=item  QScriptValue throwValue(const QScriptValue & value)
 
 =item  QString toString()
 

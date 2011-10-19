@@ -24,6 +24,7 @@
 #include "ppport.h"
 #undef do_open
 #undef do_close
+#undef RETURN
 
 typedef bool (*T_FPOINTER_QINTERNALCALLBACK_QNAMESPACE)(void **);
 typedef void (*T_FPOINTER_QTMSGHANDLER_QGLOBAL)(QtMsgType,const char *);
@@ -42,6 +43,7 @@ INCLUDE:		xs/QScriptContext.xs
 INCLUDE:		xs/QScriptContextInfo.xs
 INCLUDE:		xs/QScriptEngine.xs
 INCLUDE:		xs/QScriptEngineAgent.xs
+INCLUDE:		xs/QScriptExtensionInterface.xs
 INCLUDE:		xs/QScriptExtensionPlugin.xs
 INCLUDE:		xs/QScriptProgram.xs
 INCLUDE:		xs/QScriptString.xs

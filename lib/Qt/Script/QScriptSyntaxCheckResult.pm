@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -23,7 +23,7 @@ Qt::Script::QScriptSyntaxCheckResult
 
 =over
 
-=item   QScriptSyntaxCheckResult()
+=item   QScriptSyntaxCheckResult(const QScriptSyntaxCheckResult & other)
 
 =item   ~QScriptSyntaxCheckResult()
 
@@ -33,7 +33,7 @@ Qt::Script::QScriptSyntaxCheckResult
 
 =item  QString errorMessage()
 
-=item  QScriptSyntaxCheckResult & operator=()
+=item  QScriptSyntaxCheckResult & operator=(const QScriptSyntaxCheckResult & other)
 
 =item  QScriptSyntaxCheckResult::State state()
 

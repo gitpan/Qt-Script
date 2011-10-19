@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -23,31 +23,31 @@ Qt::Script::QScriptClass
 
 =over
 
-=item   QScriptClass()
+=item   QScriptClass(QScriptEngine * engine)
 
 =item   ~QScriptClass()
 
 =item  QScriptEngine * engine()
 
-=item  QVariant extension(, )
+=item  QVariant extension(QScriptClass::Extension extension, const QVariant & argument)
 
-=item  QVariant extension(,  = QVariant())
+=item  QVariant extension(QScriptClass::Extension extension, const QVariant & argument = QVariant())
 
 =item  QString name()
 
-=item  QScriptClassPropertyIterator * newIterator()
+=item  QScriptClassPropertyIterator * newIterator(const QScriptValue & object)
 
-=item  QScriptValue property(, , )
+=item  QScriptValue property(const QScriptValue & object, const QScriptString & name, uint id)
 
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(, , )
+=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptValue & object, const QScriptString & name, uint id)
 
 =item  QScriptValue prototype()
 
-=item  QFlags<QScriptClass::QueryFlag> queryProperty(, , , )
+=item  QFlags<QScriptClass::QueryFlag> queryProperty(const QScriptValue & object, const QScriptString & name, QFlags<QScriptClass::QueryFlag> flags, uint * id)
 
-=item  void setProperty(, , , )
+=item  void setProperty(QScriptValue & object, const QScriptString & name, uint id, const QScriptValue & value)
 
-=item  bool supportsExtension()
+=item  bool supportsExtension(QScriptClass::Extension extension)
 
 
 =back

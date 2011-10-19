@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -27,7 +27,7 @@ Qt::Script::QScriptable
 
 =item   ~QScriptable()
 
-=item  QScriptValue argument()
+=item  QScriptValue argument(int index)
 
 =item  int argumentCount()
 

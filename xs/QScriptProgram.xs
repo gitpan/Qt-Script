@@ -19,10 +19,10 @@ PROTOTYPES: DISABLE
 ################################################################
 
 ##  QScriptProgram()
-##  QScriptProgram()
-##  QScriptProgram(, , )
-##  QScriptProgram(, ,  = 1)
-##  QScriptProgram(,  = QString(),  = 1)
+##  QScriptProgram(const QScriptProgram & other)
+##  QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber)
+##  QScriptProgram(const QString & sourceCode, const QString fileName, int firstLineNumber = 1)
+##  QScriptProgram(const QString & sourceCode, const QString fileName = QString(), int firstLineNumber = 1)
   void
 QScriptProgram::new(...)
 PREINIT:
@@ -150,7 +150,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator!=()
+## bool operator!=(const QScriptProgram & other)
 void
 QScriptProgram::operator_not_equal(...)
 PREINIT:
@@ -164,7 +164,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptProgram & operator=()
+## QScriptProgram & operator=(const QScriptProgram & other)
 void
 QScriptProgram::operator_assign(...)
 PREINIT:
@@ -178,7 +178,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## bool operator==()
+## bool operator==(const QScriptProgram & other)
 void
 QScriptProgram::operator_equal_to(...)
 PREINIT:

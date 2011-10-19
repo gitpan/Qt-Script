@@ -18,7 +18,7 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QScriptEngineAgent()
+##  QScriptEngineAgent(QScriptEngine * engine)
   void
 QScriptEngineAgent::new(...)
 PREINIT:
@@ -82,7 +82,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void exceptionCatch(, )
+## void exceptionCatch(qint64 scriptId, const QScriptValue & exception)
 void
 QScriptEngineAgent::exceptionCatch(...)
 PREINIT:
@@ -96,7 +96,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void exceptionThrow(, , )
+## void exceptionThrow(qint64 scriptId, const QScriptValue & exception, bool hasHandler)
 void
 QScriptEngineAgent::exceptionThrow(...)
 PREINIT:
@@ -112,8 +112,8 @@ PPCODE:
     XSRETURN(0);
     }
 
-## QVariant extension(, )
-## QVariant extension(,  = QVariant())
+## QVariant extension(QScriptEngineAgent::Extension extension, const QVariant & argument)
+## QVariant extension(QScriptEngineAgent::Extension extension, const QVariant & argument = QVariant())
 void
 QScriptEngineAgent::extension(...)
 PREINIT:
@@ -156,7 +156,7 @@ PPCODE:
         break;
     }
 
-## void functionEntry()
+## void functionEntry(qint64 scriptId)
 void
 QScriptEngineAgent::functionEntry(...)
 PREINIT:
@@ -168,7 +168,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void functionExit(, )
+## void functionExit(qint64 scriptId, const QScriptValue & returnValue)
 void
 QScriptEngineAgent::functionExit(...)
 PREINIT:
@@ -182,7 +182,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void positionChange(, , )
+## void positionChange(qint64 scriptId, int lineNumber, int columnNumber)
 void
 QScriptEngineAgent::positionChange(...)
 PREINIT:
@@ -198,7 +198,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void scriptLoad(, , , )
+## void scriptLoad(qint64 id, const QString & program, const QString & fileName, int baseLineNumber)
 void
 QScriptEngineAgent::scriptLoad(...)
 PREINIT:
@@ -216,7 +216,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void scriptUnload()
+## void scriptUnload(qint64 id)
 void
 QScriptEngineAgent::scriptUnload(...)
 PREINIT:
@@ -228,7 +228,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## bool supportsExtension()
+## bool supportsExtension(QScriptEngineAgent::Extension extension)
 void
 QScriptEngineAgent::supportsExtension(...)
 PREINIT:

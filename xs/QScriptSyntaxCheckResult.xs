@@ -18,7 +18,7 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QScriptSyntaxCheckResult()
+##  QScriptSyntaxCheckResult(const QScriptSyntaxCheckResult & other)
   void
 QScriptSyntaxCheckResult::new(...)
 PREINIT:
@@ -79,7 +79,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptSyntaxCheckResult & operator=()
+## QScriptSyntaxCheckResult & operator=(const QScriptSyntaxCheckResult & other)
 void
 QScriptSyntaxCheckResult::operator_assign(...)
 PREINIT:

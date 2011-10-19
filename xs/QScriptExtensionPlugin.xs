@@ -18,8 +18,8 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QScriptExtensionPlugin()
-##  QScriptExtensionPlugin( = 0)
+##  QScriptExtensionPlugin(QObject * parent)
+##  QScriptExtensionPlugin(QObject * parent = 0)
   void
 QScriptExtensionPlugin::new(...)
 PREINIT:
@@ -65,7 +65,7 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
-## void initialize(, )
+## void initialize(const QString & key, QScriptEngine * engine)
 void
 QScriptExtensionPlugin::initialize(...)
 PREINIT:
@@ -99,7 +99,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue setupPackage(, )
+## QScriptValue setupPackage(const QString & key, QScriptEngine * engine)
 void
 QScriptExtensionPlugin::setupPackage(...)
 PREINIT:

@@ -40,7 +40,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue argument()
+## QScriptValue argument(int index)
 void
 QScriptContext::argument(...)
 PREINIT:
@@ -158,7 +158,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void pushScope()
+## void pushScope(const QScriptValue & object)
 void
 QScriptContext::pushScope(...)
 PREINIT:
@@ -183,7 +183,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setActivationObject()
+## void setActivationObject(const QScriptValue & activation)
 void
 QScriptContext::setActivationObject(...)
 PREINIT:
@@ -195,7 +195,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setReturnValue()
+## void setReturnValue(const QScriptValue & result)
 void
 QScriptContext::setReturnValue(...)
 PREINIT:
@@ -207,7 +207,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## void setThisObject()
+## void setThisObject(const QScriptValue & thisObject)
 void
 QScriptContext::setThisObject(...)
 PREINIT:
@@ -245,8 +245,8 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue throwError()
-## QScriptValue throwError(, )
+## QScriptValue throwError(const QString & text)
+## QScriptValue throwError(QScriptContext::Error error, const QString & text)
 void
 QScriptContext::throwError(...)
 PREINIT:
@@ -287,7 +287,7 @@ PPCODE:
         break;
     }
 
-## QScriptValue throwValue()
+## QScriptValue throwValue(const QScriptValue & value)
 void
 QScriptContext::throwValue(...)
 PREINIT:

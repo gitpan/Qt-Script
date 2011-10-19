@@ -18,7 +18,7 @@ PROTOTYPES: DISABLE
 #### 
 ################################################################
 
-##  QScriptValueIterator()
+##  QScriptValueIterator(const QScriptValue & value)
   void
 QScriptValueIterator::new(...)
 PREINIT:
@@ -103,7 +103,7 @@ PPCODE:
     XSRETURN(0);
     }
 
-## QScriptValueIterator & operator=()
+## QScriptValueIterator & operator=(QScriptValue & value)
 void
 QScriptValueIterator::operator_assign(...)
 PREINIT:
@@ -152,7 +152,7 @@ PPCODE:
     XSRETURN(1);
     }
 
-## void setValue()
+## void setValue(const QScriptValue & value)
 void
 QScriptValueIterator::setValue(...)
 PREINIT:

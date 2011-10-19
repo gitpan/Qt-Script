@@ -7,8 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_02';
-our $ISA     = qw/Qt::Core::QObject/;
+our $VERSION = '0.01_03';
 
 
 # FIXME: operator overload
@@ -26,21 +25,21 @@ Qt::Script::QScriptEngine
 
 =item   QScriptEngine()
 
-=item   QScriptEngine()
+=item   QScriptEngine(QObject * parent)
 
 =item   ~QScriptEngine()
 
-=item  void abortEvaluation()
+=item  void abortEvaluation(const QScriptValue & result)
 
-=item  void abortEvaluation( = QScriptValue())
+=item  void abortEvaluation(const QScriptValue & result = QScriptValue())
 
 =item  QScriptEngineAgent * agent()
 
 =item  QStringList availableExtensions()
 
-=item  bool canEvaluate()
+=item  bool canEvaluate(const QString & program)
 
-=item  static QScriptSyntaxCheckResult checkSyntax()
+=item  static QScriptSyntaxCheckResult checkSyntax(const QString & program)
 
 =item  void clearExceptions()
 
@@ -48,83 +47,83 @@ Qt::Script::QScriptEngine
 
 =item  QScriptContext * currentContext()
 
-=item  QScriptValue defaultPrototype()
+=item  QScriptValue defaultPrototype(int metaTypeId)
 
-=item  QScriptValue evaluate()
+=item  QScriptValue evaluate(const QScriptProgram & program)
 
-=item  QScriptValue evaluate(, , )
+=item  QScriptValue evaluate(const QString & program, const QString & fileName, int lineNumber)
 
-=item  QScriptValue evaluate(, ,  = 1)
+=item  QScriptValue evaluate(const QString & program, const QString & fileName, int lineNumber = 1)
 
-=item  QScriptValue evaluate(,  = QString(),  = 1)
+=item  QScriptValue evaluate(const QString & program, const QString & fileName = QString(), int lineNumber = 1)
 
 =item  QScriptValue globalObject()
 
 =item  bool hasUncaughtException()
 
-=item  QScriptValue importExtension()
+=item  QScriptValue importExtension(const QString & extension)
 
 =item  QStringList importedExtensions()
 
-=item  void installTranslatorFunctions()
+=item  void installTranslatorFunctions(const QScriptValue & object)
 
-=item  void installTranslatorFunctions( = QScriptValue())
+=item  void installTranslatorFunctions(const QScriptValue & object = QScriptValue())
 
 =item  bool isEvaluating()
 
 =item  QScriptValue newActivationObject()
 
-=item  QScriptValue newArray()
+=item  QScriptValue newArray(uint length)
 
-=item  QScriptValue newArray( = 0)
+=item  QScriptValue newArray(uint length = 0)
 
-=item  QScriptValue newDate()
+=item  QScriptValue newDate(double value)
 
-=item  QScriptValue newDate()
+=item  QScriptValue newDate(const QDateTime & value)
 
-=item  QScriptValue newFunction(, )
+=item  QScriptValue newFunction(QScriptEngine::FunctionSignature signature, int length)
 
-=item  QScriptValue newFunction(,  = 0)
+=item  QScriptValue newFunction(QScriptEngine::FunctionSignature signature, int length = 0)
 
-=item  QScriptValue newFunction(, )
+=item  QScriptValue newFunction(QScriptEngine::FunctionWithArgSignature signature, void * arg)
 
-=item  QScriptValue newFunction(, , )
+=item  QScriptValue newFunction(QScriptEngine::FunctionSignature signature, const QScriptValue & prototype, int length)
 
-=item  QScriptValue newFunction(, ,  = 0)
+=item  QScriptValue newFunction(QScriptEngine::FunctionSignature signature, const QScriptValue & prototype, int length = 0)
 
 =item  QScriptValue newObject()
 
-=item  QScriptValue newObject(, )
+=item  QScriptValue newObject(QScriptClass * scriptClass, const QScriptValue & data)
 
-=item  QScriptValue newObject(,  = QScriptValue())
+=item  QScriptValue newObject(QScriptClass * scriptClass, const QScriptValue & data = QScriptValue())
 
-=item  QScriptValue newQMetaObject(, )
+=item  QScriptValue newQMetaObject(const QMetaObject * metaObject, const QScriptValue & ctor)
 
-=item  QScriptValue newQMetaObject(,  = QScriptValue())
+=item  QScriptValue newQMetaObject(const QMetaObject * metaObject, const QScriptValue & ctor = QScriptValue())
 
-=item  QScriptValue newQObject(, , )
+=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
 
-=item  QScriptValue newQObject(, ,  = 0)
+=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
 
-=item  QScriptValue newQObject(,  = QScriptEngine::QtOwnership,  = 0)
+=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
 
-=item  QScriptValue newQObject(, , , )
+=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
 
-=item  QScriptValue newQObject(, , ,  = 0)
+=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
 
-=item  QScriptValue newQObject(, ,  = QScriptEngine::QtOwnership,  = 0)
+=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
 
-=item  QScriptValue newRegExp()
+=item  QScriptValue newRegExp(const QRegExp & regexp)
 
-=item  QScriptValue newRegExp(, )
+=item  QScriptValue newRegExp(const QString & pattern, const QString & flags)
 
-=item  QScriptValue newVariant()
+=item  QScriptValue newVariant(const QVariant & value)
 
-=item  QScriptValue newVariant(, )
+=item  QScriptValue newVariant(const QScriptValue & object, const QVariant & value)
 
 =item  QScriptValue nullValue()
 
-=item  QScriptValue objectById()
+=item  QScriptValue objectById(qint64 id)
 
 =item  void popContext()
 
@@ -132,19 +131,19 @@ Qt::Script::QScriptEngine
 
 =item  QScriptContext * pushContext()
 
-=item  void reportAdditionalMemoryCost()
+=item  void reportAdditionalMemoryCost(int size)
 
-=item  void setAgent()
+=item  void setAgent(QScriptEngineAgent * agent)
 
-=item  void setDefaultPrototype(, )
+=item  void setDefaultPrototype(int metaTypeId, const QScriptValue & prototype)
 
-=item  void setGlobalObject()
+=item  void setGlobalObject(const QScriptValue & object)
 
-=item  void setProcessEventsInterval()
+=item  void setProcessEventsInterval(int interval)
 
-=item  QScriptValue toObject()
+=item  QScriptValue toObject(const QScriptValue & value)
 
-=item  QScriptString toStringHandle()
+=item  QScriptString toStringHandle(const QString & str)
 
 =item  QScriptValue uncaughtException()
 
