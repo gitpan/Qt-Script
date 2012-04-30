@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -163,7 +163,7 @@ PPCODE:
       arg02 = (uint)SvUV(ST(3));
     QFlags<QScriptValue::PropertyFlag> ret = THIS->propertyFlags(*arg00, *arg01, arg02);
     ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
+    sv_setiv(ST(0), (int)ret);
     XSRETURN(1);
     }
 
@@ -192,14 +192,14 @@ PPCODE:
     if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptString") && SvIOK(ST(3)) && (SvIOK(ST(4)) || SvUOK(ST(4)))) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
       arg01 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(2))));
-      arg02 = QFlags<QScriptClass::QueryFlag>((int)SvIV(ST(3)));
+      arg02 = QFlags<QScriptClass::QueryFlag>((QScriptClass::QueryFlag)SvIV(ST(3)));
       {
         uint tmp = static_cast<uint>(SvUV(ST(4)));
         arg03 = &tmp;
     }
     QFlags<QScriptClass::QueryFlag> ret = THIS->queryProperty(*arg00, *arg01, arg02, arg03);
     ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
+    sv_setiv(ST(0), (int)ret);
     XSRETURN(1);
     }
 

@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_03';
+our $VERSION = '0.01_04';
 
 
 # FIXME: operator overload
@@ -101,18 +101,6 @@ Qt::Script::QScriptEngine
 
 =item  QScriptValue newQMetaObject(const QMetaObject * metaObject, const QScriptValue & ctor = QScriptValue())
 
-=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
-
-=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
-
-=item  QScriptValue newQObject(QObject * object, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
-
-=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options)
-
-=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
-
-=item  QScriptValue newQObject(const QScriptValue & scriptObject, QObject * qtObject, QScriptEngine::ValueOwnership ownership = QScriptEngine::QtOwnership, const QFlags<QScriptEngine::QObjectWrapOption> & options = 0)
-
 =item  QScriptValue newRegExp(const QRegExp & regexp)
 
 =item  QScriptValue newRegExp(const QString & pattern, const QString & flags)
@@ -197,7 +185,7 @@ Dongxu Ma E<lt>dongxu@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011 - 2011 by Dongxu Ma
+Copyright (C) 2011 - 2012 by Dongxu Ma
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

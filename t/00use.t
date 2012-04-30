@@ -5,13 +5,14 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 16;
+use Test::More tests => 17;
 BEGIN {
 use_ok('Qt::Script');
 use_ok('Qt::Script');
 use_ok('Qt::Script::QScriptClassPropertyIterator');
 use_ok('Qt::Script::QScriptProgram');
 use_ok('Qt::Script::QScriptContext');
+use_ok('Qt::Script::Template');
 use_ok('Qt::Script::QScriptValueIterator');
 use_ok('Qt::Script::QScriptString');
 use_ok('Qt::Script::QScriptContextInfo');

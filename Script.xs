@@ -32,6 +32,7 @@ typedef QScriptValue (*T_FPOINTER_FUNCTIONSIGNATURE_QSCRIPTENGINE)(QScriptContex
 typedef void (*T_FPOINTER_DEMARSHALFUNCTION_QSCRIPTENGINE)(const QScriptValue &,void *);
 typedef QScriptValue (*T_FPOINTER_MARSHALFUNCTION_QSCRIPTENGINE)(QScriptEngine *,const void *);
 typedef QScriptValue (*T_FPOINTER_FUNCTIONWITHARGSIGNATURE_QSCRIPTENGINE)(QScriptContext *,QScriptEngine *,void *);
+typedef QList<QScriptValue> T000;
 
 MODULE = Qt		PACKAGE = Qt
 PROTOTYPES: DISABLE
@@ -50,3 +51,4 @@ INCLUDE:		xs/QScriptString.xs
 INCLUDE:		xs/QScriptSyntaxCheckResult.xs
 INCLUDE:		xs/QScriptValue.xs
 INCLUDE:		xs/QScriptValueIterator.xs
+INCLUDE:		xs/T000.xs

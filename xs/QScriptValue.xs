@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -267,34 +267,123 @@ CODE:
     if(THIS != 0 && !SvREADONLY(SvRV(ST(0))))
         delete THIS;
 
+## QScriptValue call(const QScriptValue & thisObject, const QList<QScriptValue> & args)
+## QScriptValue call(const QScriptValue & thisObject, const QList<QScriptValue> & args = QList<QScriptValue>())
+## QScriptValue call(const QScriptValue & thisObject = QScriptValue(), const QList<QScriptValue> & args = QList<QScriptValue>())
 ## QScriptValue call(const QScriptValue & thisObject, const QScriptValue & arguments)
 void
 QScriptValue::call(...)
 PREINIT:
 QScriptValue * arg00;
-QScriptValue * arg01;
+QList<QScriptValue> * arg01;
+QScriptValue * arg10;
+const QList<QScriptValue> & arg11_ = QList<QScriptValue>();
+QList<QScriptValue> * arg11 = const_cast<QList<QScriptValue> *>(&arg11_);
+const QScriptValue & arg20_ = QScriptValue();
+QScriptValue * arg20 = const_cast<QScriptValue *>(&arg20_);
+const QList<QScriptValue> & arg21_ = QList<QScriptValue>();
+QList<QScriptValue> * arg21 = const_cast<QList<QScriptValue> *>(&arg21_);
+QScriptValue * arg30;
+QScriptValue * arg31;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
+    switch(items) {
+      case 1:
+      {
+        if (1) {
+      
+    QScriptValue ret = THIS->call(*arg20, *arg21);
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+        break;
+      }
+      case 2:
+      {
+        if (sv_isa(ST(1), "Qt::Script::QScriptValue")) {
+      arg10 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
+    QScriptValue ret = THIS->call(*arg10, *arg11);
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+	else
+            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
+        break;
+      }
+      case 3:
+      {
+        if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::Template::T000")) {
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
-      arg01 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
+      arg01 = reinterpret_cast<QList<QScriptValue> *>(SvIV((SV*)SvRV(ST(2))));
     QScriptValue ret = THIS->call(*arg00, *arg01);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
     XSRETURN(1);
     }
+        else if (sv_isa(ST(1), "Qt::Script::QScriptValue") && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
+      arg30 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
+      arg31 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
+    QScriptValue ret = THIS->call(*arg30, *arg31);
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+	else
+            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
+        break;
+      }
+      default:
+        Perl_croak(aTHX_ "wrong number/type of arguments passed in");
+        break;
+    }
 
+## QScriptValue construct(const QList<QScriptValue> & args)
+## QScriptValue construct(const QList<QScriptValue> & args = QList<QScriptValue>())
 ## QScriptValue construct(const QScriptValue & arguments)
 void
 QScriptValue::construct(...)
 PREINIT:
-QScriptValue * arg00;
+QList<QScriptValue> * arg00;
+const QList<QScriptValue> & arg10_ = QList<QScriptValue>();
+QList<QScriptValue> * arg10 = const_cast<QList<QScriptValue> *>(&arg10_);
+QScriptValue * arg20;
 PPCODE:
-    if (sv_isa(ST(1), "Qt::Script::QScriptValue")) {
-      arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
+    switch(items) {
+      case 1:
+      {
+        if (1) {
+      
+    QScriptValue ret = THIS->construct(*arg10);
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+        break;
+      }
+      case 2:
+      {
+        if (sv_isa(ST(1), "Qt::Script::Template::T000")) {
+      arg00 = reinterpret_cast<QList<QScriptValue> *>(SvIV((SV*)SvRV(ST(1))));
     QScriptValue ret = THIS->construct(*arg00);
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
     XSRETURN(1);
+    }
+        else if (sv_isa(ST(1), "Qt::Script::QScriptValue")) {
+      arg20 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
+    QScriptValue ret = THIS->construct(*arg20);
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+	else
+            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
+        break;
+      }
+      default:
+        Perl_croak(aTHX_ "wrong number/type of arguments passed in");
+        break;
     }
 
 ## QScriptValue data()
@@ -600,160 +689,6 @@ PPCODE:
     XSRETURN(1);
     }
 
-## QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-## QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-## QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode)
-## QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-## QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-## QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-void
-QScriptValue::property(...)
-PREINIT:
-QString * arg00;
-QFlags<QScriptValue::ResolveFlag> * arg01;
-QString * arg10;
-const QFlags<QScriptValue::ResolveFlag> & arg11_ = QScriptValue::ResolvePrototype;
-QFlags<QScriptValue::ResolveFlag> * arg11 = const_cast<QFlags<QScriptValue::ResolveFlag> *>(&arg11_);
-quint32 arg20;
-QFlags<QScriptValue::ResolveFlag> * arg21;
-quint32 arg30;
-const QFlags<QScriptValue::ResolveFlag> & arg31_ = QScriptValue::ResolvePrototype;
-QFlags<QScriptValue::ResolveFlag> * arg31 = const_cast<QFlags<QScriptValue::ResolveFlag> *>(&arg31_);
-QScriptString * arg40;
-QFlags<QScriptValue::ResolveFlag> * arg41;
-QScriptString * arg50;
-const QFlags<QScriptValue::ResolveFlag> & arg51_ = QScriptValue::ResolvePrototype;
-QFlags<QScriptValue::ResolveFlag> * arg51 = const_cast<QFlags<QScriptValue::ResolveFlag> *>(&arg51_);
-PPCODE:
-    switch(items) {
-      case 2:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString")) {
-      arg10 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-    QScriptValue ret = THIS->property(*arg10, *arg11);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-        else if ((SvIOK(ST(1)) || SvUOK(ST(1)))) {
-      arg30 = (quint32)SvUV(ST(1));
-    QScriptValue ret = THIS->property(arg30, *arg31);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString")) {
-      arg50 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-    QScriptValue ret = THIS->property(*arg50, *arg51);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      case 3:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString") && sv_isa(ST(2), "")) {
-      arg00 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-      arg01 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
-    QScriptValue ret = THIS->property(*arg00, *arg01);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "")) {
-      arg20 = (quint32)SvUV(ST(1));
-      arg21 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
-    QScriptValue ret = THIS->property(arg20, *arg21);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString") && sv_isa(ST(2), "")) {
-      arg40 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-      arg41 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
-    QScriptValue ret = THIS->property(*arg40, *arg41);
-    ST(0) = sv_newmortal();
-    sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
-    XSRETURN(1);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      default:
-        Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-    }
-
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-## QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-void
-QScriptValue::propertyFlags(...)
-PREINIT:
-QString * arg00;
-QFlags<QScriptValue::ResolveFlag> * arg01;
-QString * arg10;
-const QFlags<QScriptValue::ResolveFlag> & arg11_ = QScriptValue::ResolvePrototype;
-QFlags<QScriptValue::ResolveFlag> * arg11 = const_cast<QFlags<QScriptValue::ResolveFlag> *>(&arg11_);
-QScriptString * arg20;
-QFlags<QScriptValue::ResolveFlag> * arg21;
-QScriptString * arg30;
-const QFlags<QScriptValue::ResolveFlag> & arg31_ = QScriptValue::ResolvePrototype;
-QFlags<QScriptValue::ResolveFlag> * arg31 = const_cast<QFlags<QScriptValue::ResolveFlag> *>(&arg31_);
-PPCODE:
-    switch(items) {
-      case 2:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString")) {
-      arg10 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-    QFlags<QScriptValue::PropertyFlag> ret = THIS->propertyFlags(*arg10, *arg11);
-    ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
-    XSRETURN(1);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString")) {
-      arg30 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-    QFlags<QScriptValue::PropertyFlag> ret = THIS->propertyFlags(*arg30, *arg31);
-    ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
-    XSRETURN(1);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      case 3:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString") && sv_isa(ST(2), "")) {
-      arg00 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-      arg01 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
-    QFlags<QScriptValue::PropertyFlag> ret = THIS->propertyFlags(*arg00, *arg01);
-    ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
-    XSRETURN(1);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString") && sv_isa(ST(2), "")) {
-      arg20 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-      arg21 = reinterpret_cast<QFlags<QScriptValue::ResolveFlag> *>(SvIV((SV*)SvRV(ST(2))));
-    QFlags<QScriptValue::PropertyFlag> ret = THIS->propertyFlags(*arg20, *arg21);
-    ST(0) = sv_newmortal();
-    sv_setiv(ST(0), (IV)ret);
-    XSRETURN(1);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      default:
-        Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-    }
-
 ## QScriptValue prototype()
 void
 QScriptValue::prototype(...)
@@ -803,94 +738,6 @@ PPCODE:
       arg00 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(1))));
     (void)THIS->setData(*arg00);
     XSRETURN(0);
-    }
-
-## void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-## void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
-## void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-## void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
-## void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-## void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
-void
-QScriptValue::setProperty(...)
-PREINIT:
-QString * arg00;
-QScriptValue * arg01;
-QFlags<QScriptValue::PropertyFlag> * arg02;
-QString * arg10;
-QScriptValue * arg11;
-const QFlags<QScriptValue::PropertyFlag> & arg12_ = QScriptValue::KeepExistingFlags;
-QFlags<QScriptValue::PropertyFlag> * arg12 = const_cast<QFlags<QScriptValue::PropertyFlag> *>(&arg12_);
-quint32 arg20;
-QScriptValue * arg21;
-QFlags<QScriptValue::PropertyFlag> * arg22;
-quint32 arg30;
-QScriptValue * arg31;
-const QFlags<QScriptValue::PropertyFlag> & arg32_ = QScriptValue::KeepExistingFlags;
-QFlags<QScriptValue::PropertyFlag> * arg32 = const_cast<QFlags<QScriptValue::PropertyFlag> *>(&arg32_);
-QScriptString * arg40;
-QScriptValue * arg41;
-QFlags<QScriptValue::PropertyFlag> * arg42;
-QScriptString * arg50;
-QScriptValue * arg51;
-const QFlags<QScriptValue::PropertyFlag> & arg52_ = QScriptValue::KeepExistingFlags;
-QFlags<QScriptValue::PropertyFlag> * arg52 = const_cast<QFlags<QScriptValue::PropertyFlag> *>(&arg52_);
-PPCODE:
-    switch(items) {
-      case 3:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString") && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
-      arg10 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-      arg11 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-    (void)THIS->setProperty(*arg10, *arg11, *arg12);
-    XSRETURN(0);
-    }
-        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
-      arg30 = (quint32)SvUV(ST(1));
-      arg31 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-    (void)THIS->setProperty(arg30, *arg31, *arg32);
-    XSRETURN(0);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString") && sv_isa(ST(2), "Qt::Script::QScriptValue")) {
-      arg50 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-      arg51 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-    (void)THIS->setProperty(*arg50, *arg51, *arg52);
-    XSRETURN(0);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      case 4:
-      {
-        if (sv_isa(ST(1), "Qt::Core::QString") && sv_isa(ST(2), "Qt::Script::QScriptValue") && sv_isa(ST(3), "")) {
-      arg00 = reinterpret_cast<QString *>(SvIV((SV*)SvRV(ST(1))));
-      arg01 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-      arg02 = reinterpret_cast<QFlags<QScriptValue::PropertyFlag> *>(SvIV((SV*)SvRV(ST(3))));
-    (void)THIS->setProperty(*arg00, *arg01, *arg02);
-    XSRETURN(0);
-    }
-        else if ((SvIOK(ST(1)) || SvUOK(ST(1))) && sv_isa(ST(2), "Qt::Script::QScriptValue") && sv_isa(ST(3), "")) {
-      arg20 = (quint32)SvUV(ST(1));
-      arg21 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-      arg22 = reinterpret_cast<QFlags<QScriptValue::PropertyFlag> *>(SvIV((SV*)SvRV(ST(3))));
-    (void)THIS->setProperty(arg20, *arg21, *arg22);
-    XSRETURN(0);
-    }
-        else if (sv_isa(ST(1), "Qt::Script::QScriptString") && sv_isa(ST(2), "Qt::Script::QScriptValue") && sv_isa(ST(3), "")) {
-      arg40 = reinterpret_cast<QScriptString *>(SvIV((SV*)SvRV(ST(1))));
-      arg41 = reinterpret_cast<QScriptValue *>(SvIV((SV*)SvRV(ST(2))));
-      arg42 = reinterpret_cast<QFlags<QScriptValue::PropertyFlag> *>(SvIV((SV*)SvRV(ST(3))));
-    (void)THIS->setProperty(*arg40, *arg41, *arg42);
-    XSRETURN(0);
-    }
-	else
-            Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
-      }
-      default:
-        Perl_croak(aTHX_ "wrong number/type of arguments passed in");
-        break;
     }
 
 ## void setPrototype(const QScriptValue & prototype)

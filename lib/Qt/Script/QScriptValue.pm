@@ -7,7 +7,7 @@ use strict;
 use warnings;
 #use Carp;
 
-our $VERSION = '0.01_03';
+our $VERSION = '0.01_04';
 
 
 # FIXME: operator overload
@@ -59,7 +59,17 @@ Qt::Script::QScriptValue
 
 =item   ~QScriptValue()
 
+=item  QScriptValue call(const QScriptValue & thisObject, const QList<QScriptValue> & args)
+
+=item  QScriptValue call(const QScriptValue & thisObject, const QList<QScriptValue> & args = QList<QScriptValue>())
+
+=item  QScriptValue call(const QScriptValue & thisObject = QScriptValue(), const QList<QScriptValue> & args = QList<QScriptValue>())
+
 =item  QScriptValue call(const QScriptValue & thisObject, const QScriptValue & arguments)
+
+=item  QScriptValue construct(const QList<QScriptValue> & args)
+
+=item  QScriptValue construct(const QList<QScriptValue> & args = QList<QScriptValue>())
 
 =item  QScriptValue construct(const QScriptValue & arguments)
 
@@ -109,26 +119,6 @@ Qt::Script::QScriptValue
 
 =item  QScriptValue & operator=(const QScriptValue & other)
 
-=item  QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-
-=item  QScriptValue property(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-
-=item  QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode)
-
-=item  QScriptValue property(quint32 arrayIndex, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-
-=item  QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-
-=item  QScriptValue property(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode)
-
-=item  QFlags<QScriptValue::PropertyFlag> propertyFlags(const QScriptString & name, const QFlags<QScriptValue::ResolveFlag> & mode = QScriptValue::ResolvePrototype)
-
 =item  QScriptValue prototype()
 
 =item  QScriptValue scope()
@@ -136,18 +126,6 @@ Qt::Script::QScriptValue
 =item  QScriptClass * scriptClass()
 
 =item  void setData(const QScriptValue & data)
-
-=item  void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-
-=item  void setProperty(const QString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
-
-=item  void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-
-=item  void setProperty(quint32 arrayIndex, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
-
-=item  void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags)
-
-=item  void setProperty(const QScriptString & name, const QScriptValue & value, const QFlags<QScriptValue::PropertyFlag> & flags = QScriptValue::KeepExistingFlags)
 
 =item  void setPrototype(const QScriptValue & prototype)
 
@@ -233,7 +211,7 @@ Dongxu Ma E<lt>dongxu@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011 - 2011 by Dongxu Ma
+Copyright (C) 2011 - 2012 by Dongxu Ma
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

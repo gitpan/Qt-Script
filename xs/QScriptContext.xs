@@ -1,7 +1,7 @@
 ################################################################
 # THE FOLLOWING CODE IS AUTOMATED, ANY MODIFICATION WILL BE LOST!
 #
-# Copyright (C) 2007 - 2011 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
+# Copyright (C) 2007 - 2012 by Dongxu Ma <dongxu _at_ cpan _dot_ org>
 #
 # This library is free software; you can redistribute it and/or 
 # modify it under the same terms as Perl itself.
@@ -180,6 +180,19 @@ PPCODE:
     QScriptValue ret = THIS->returnValue();
     ST(0) = sv_newmortal();
     sv_setref_pv(ST(0), "Qt::Script::QScriptValue", (void *)new QScriptValue(ret));
+    XSRETURN(1);
+    }
+
+## QList<QScriptValue> scopeChain()
+void
+QScriptContext::scopeChain(...)
+PREINIT:
+PPCODE:
+    if (1) {
+      
+    QList<QScriptValue> ret = THIS->scopeChain();
+    ST(0) = sv_newmortal();
+    sv_setref_pv(ST(0), "Qt::Script::Template::T000", (void *)new QList<QScriptValue>(ret));
     XSRETURN(1);
     }
 

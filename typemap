@@ -23,6 +23,7 @@ QScriptValue *                          		T_PTROBJ_0019
 QScriptSyntaxCheckResult *              		T_PTROBJ_0020
 QScriptEngineAgent *                    		T_PTROBJ_0021
 QBool *                                 		T_PTROBJ_0022
+T000 *                                  		T_PTROBJ_0023
 
 ################################################################
 INPUT
@@ -164,6 +165,12 @@ T_PTROBJ_0022
     else
         Perl_croak(aTHX_ \"$var is not of type Qt::Core::QBool\");
 
+T_PTROBJ_0023
+    if (sv_derived_from($arg, \"Qt::Script::Template::T000\"))
+        $var = reinterpret_cast<$type>(SvIV((SV*)SvRV($arg)));
+    else
+        Perl_croak(aTHX_ \"$var is not of type Qt::Script::Template::T000\");
+
 
 ################################################################
 OUTPUT
@@ -235,4 +242,7 @@ T_PTROBJ_0021
 
 T_PTROBJ_0022
     sv_setref_pv($arg, \"Qt::Core::QBool\", (void *)$var);
+
+T_PTROBJ_0023
+    sv_setref_pv($arg, \"Qt::Script::Template::T000\", (void *)$var);
 
